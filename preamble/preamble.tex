@@ -1,0 +1,163 @@
+% preamble.tex
+\documentclass[
+    a4paper,    % to be printed on A4 paper
+    12pt,       % default font size
+    %oneside,   % if you want your document to be onesided only
+    twoside,    % if you want your document to be printed on front and back
+    %bibtotoc,	% Adding Bibliography to table of contents
+    onecolumn,	% write in one column
+    %idxtotoc,	% index to table of contents
+]{report}
+
+% overall layout settings
+\input{preamble/layout}
+
+% setting header/footer with fancyheaders in separate file
+\input{preamble/fancyheaders} % find fancyheader settings here
+
+% setting listings (for code/pseudo code)
+\input{preamble/loadlistings} % find listing/code settings here
+
+% Formats
+\usepackage{textcomp}
+
+% Numbering of headers:
+\usepackage[nottoc,notlof,notlot]{tocbibind}	% Adding all titles to the toc automatically
+\setcounter{secnumdepth}{4}	% x+1 section numbering
+\setcounter{tocdepth}{2}	% x+1 section numbering in the table of content (toc)
+%\pagenumbering{arabic}		% options are: % arabic; roman; Roman; alph; Alph
+\usepackage{afterpage}
+\usepackage{nextpage}
+
+% ifthen
+\usepackage{ifthen}
+\usepackage{shortvrb}
+
+% UK-English
+\usepackage[english]{babel} 
+\usepackage[babel]{csquotes} % correct quotation marks, e.g. \enquote{some text}; alternatively \glqq und \grqq
+
+% Math packages
+\usepackage[intlimits,sumlimits]{amsmath} % setting placements of limits
+\usepackage{amssymb}
+\usepackage{amstext}	
+\usepackage{amsfonts}
+\usepackage{mathtools} % dynamic behaviour of amsmath
+\usepackage{mathrsfs} % provides rsfs fonts (i.e. for Laplace fcn)
+\usepackage{amsthm}
+\usepackage{units} % package for unit, e.g. $\unit[\frac{1}{8}]{m}$
+\usepackage{siunitx} % e.g. \num{1e10} for scientific notation
+
+% TikZ:
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, intersections, through}
+\usetikzlibrary{decorations.text, decorations.shapes, backgrounds}
+% Complex graphics with tikz, e.g. flow charts:
+% \usetikzlibrary{backgrounds,shapes,calc,arrows} 
+\usepackage{pgfplots} % Plots with pgf
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.10} % make sure we are using a version of pgfplots that can handle the features we use!
+\pgfplotsset{width=6cm} % orig: 5
+\pgfplotsset{height=3.6cm} % orig: 3
+\pgfplotsset{grid style={solid}}
+
+% Graphics
+\usepackage{graphicx} % package for loading graphics, e.g. png, pdf, eps, etc.
+% caption/subcaption for floating objects:
+\usepackage{caption}
+\captionsetup{%
+  %format=hang,%
+  indention=2em,%
+  labelformat=default,%
+  labelsep=colon,%
+  font=onehalfspacing,%
+  labelfont=bf,%
+  listformat=simple,%
+  position=below,%
+  skip=1em,%
+  hypcap=true%
+}
+\usepackage{subcaption}
+\captionsetup[sub]{%
+  indention=1em,%
+  font+=small,%
+  font+=onehalfspacing,%
+  labelformat=parens,%
+  labelsep=space,%
+  subrefformat=parens,%
+  skip=1ex,%
+  list=false,%true,%
+  hypcap=true%
+}
+
+% Colour
+\usepackage{color} % package for color support
+\usepackage{colortbl} % for colors in tables
+
+% PDF packages
+\usepackage[pdftex]{hyperref}
+\hypersetup{pdfauthor=\name,
+  pdftitle=\thesistitle,
+  pdfkeywords={Thesis, \degree}}
+\hypersetup{colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black}
+\usepackage[final]{pdfpages}
+
+% URL
+\usepackage{url} % hyphenation for urls
+
+% % Bibliography hyperref
+\usepackage{natbib} % required for bibliography
+\bibliographystyle{plain}
+%\bibliographystyle{authordate1}
+
+% Tables
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{dcolumn}	% Decimal column alignments
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+% Pseudocode
+\usepackage[ruled,chapter]{algorithm} % plain, boxed, ruled
+\usepackage{algpseudocode}
+\newcommand{\Commentinline}[1]{\hfill// \textit{#1}}
+\renewcommand{\algorithmiccomment}[1]{// \textit{#1}}
+\algnewcommand\algorithmicoutput{\textbf{Output:}}
+\algnewcommand\Output{\item[\algorithmicoutput]}
+
+% Change orientation of single pages (useful for page filling figures/tables):
+\usepackage{pdflscape} % problem when printing, so only use it for online versions of the document
+\usepackage{rotating} % e.g. \begin{sidewaystable}, or \begin{turn}{angle}
+
+% my own clearpage till odd page
+\newcommand\myclearpage{\clearpage\mypagestyle{empty} {\cleartooddpage}}
+% my own clearpage till odd page
+\newcommand\doubleclearpage{\cleartooddpage}
+
+% labels/cross references for 'description' lists:
+\usepackage{enumitem}
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+    #2%
+    \def\@currentlabel{#2}%
+    \phantomsection\label{#1}\endgroup
+}
+\makeatother
+
+% footnotes with label/ref, e.g.:
+% some text with a new footnote\fnmark{label}
+% and on its own: \fntext{label}{footnote text}
+\usepackage{refcount}
+\newcommand{\fnmark}[1]{\refstepcounter{footnote}\label{#1}\footnotemark[\getrefnumber{#1}]}
+\newcommand{\fntext}[2]{\footnotetext[\getrefnumber{#1}]{#2}}
+
+% for demonstration only
+\usepackage{lipsum}
+
+%
+% END
+%

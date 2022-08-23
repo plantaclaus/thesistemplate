@@ -1,0 +1,52 @@
+% fancyheaders.tex
+
+% New commands for loading own pagestyles
+\newcommand\mypagestyle[1]{\pagestyle{#1}}
+\newcommand\mylisthead[1]{\fancyhead[LE,RO]{\textsl{#1}}}
+
+% using fancyhdr to define header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand\sectionmark[1]{\markright{\textsl{\thesection: #1}}}
+\renewcommand\chaptermark[1]{\markboth{\textsl{\chaptername\ \thechapter: #1}}{}}
+
+% myfancy
+\fancypagestyle{myfancy}{
+\fancyhead{}
+\fancyhead[LE]{\leftmark}
+\fancyhead[RO]{\rightmark}
+\fancyfoot{}
+\fancyfoot[C]{}
+\fancyfoot[RO,LE]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}}
+
+% plain
+% redefine the style 'plain', 
+% 'plain' is used when calling \chapter{foo}
+\fancypagestyle{plain}{
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}}
+
+% Lists, e.g. for table of content, list of figures etc.
+\fancypagestyle{lists}{
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}}
+
+% References
+\fancypagestyle{myreferences}{
+\mypagestyle{myfancy}
+\fancyhead{}
+\fancyhead[LE,RO]{\textsl{\bibname}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}}
+
+%
+% END
+%

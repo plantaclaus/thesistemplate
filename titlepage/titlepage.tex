@@ -1,0 +1,48 @@
+\begin{titlepage}
+
+\begin{center}
+\rule{\linewidth}{1pt}
+
+\textsc{\Large\thesistitle}
+
+\rule{\linewidth}{1pt}
+
+\vfill
+
+\begin{Large}\textbf{\name}\end{Large} \\
+[3ex]\begin{large}Submitted for the degree of \degree\end{large}
+\ifthenelse{\equal{\diploma}{}}%
+           {}
+           {\\[1ex]\begin{large}and the \diploma\end{large}}
+
+\vfill
+
+\ifthenelse{\equal{\universitylogo}{}}%
+           {}
+           {%
+             \begin{figure}[h!]
+               \centering
+               \includegraphics[scale=0.4]{\universitylogo}
+             \end{figure}%
+           }
+
+\vfill
+
+\ifthenelse{\equal{\researchgroup}{}}%
+           {}
+           {\begin{Large}\researchgroup\end{Large}\\[2ex]}%
+\ifthenelse{\equal{\department}{}}%
+           {}
+           {\begin{Large}\department\end{Large}\\[2ex]}%
+%
+{\LARGE\university}\\[10ex]
+
+{Month Year}
+
+\end{center}
+
+\end{titlepage}
+
+%
+% END
+%

@@ -1,0 +1,25 @@
+\section{Mathematical Model}
+Something smart, \cite{DoeJane2001}. Also, see the sideways printed Table \ref{tab:parefficiencybig} on page \pageref{tab:parefficiencybig}.
+
+Moreover, Figure \ref{fig:parefficiency} shows another example of pgfplots beautifully plotting data from a data file. Table \ref{tab:parefficiency} shows the same data as a table.
+
+% include table
+\input{content/reschap3/parallel_efficiency_table}
+
+\begin{figure}[p]
+ \centering
+ \includegraphics[scale=0.75]{content/reschap3/images/pgfplot_texfile_parallel_efficiency}
+ \caption[PGFPlot with a logarithmic scale on the $x$-axis. Parallel scalability of some computational experiment.]{PGFPlot with a logarithmic scale on the $x$-axis. Parallel scalability of some computational experiment. See also Table \ref{tab:parefficiency}.}
+ \label{fig:parefficiency}
+\end{figure}
+
+%% sideways printed table, good for huge tables:
+\begin{sidewaystable}[p]
+  \centering
+  \pgfplotstableread{content/reschap3/table-data/parallel_efficiency_data.pgfdat}\pgftablepareffbigger
+  \input{content/reschap3/table-data/pgftablesettings_parallel_efficiency_table.tex}
+  \pgfplotstabletypeset[columns={simid, speed-up, num_nodes_per_core, no_cores, pareff, totalwalltime, solve_time, newfraction, num_nodes, nodes2},
+  ]\pgftablepareffbigger
+  \caption{Same as Table \ref{tab:parefficiency}, but with more columns to stretch the width such that it has to be rotated to fit on one page.}
+  \label{tab:parefficiencybig}
+\end{sidewaystable}
